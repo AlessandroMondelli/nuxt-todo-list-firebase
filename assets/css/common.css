@@ -1,0 +1,45 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+h1, h2, h3, h4, h5 {
+    font-family: 'Inter', sans-serif;
+}
+
+p, label, li {
+    font-family: 'lato', sans-serif;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.container {
+    width: 80%;
+    margin: 3rem auto;
+}
+
+.container-sm {
+    width: 50%;
+    margin: 3rem auto;
+}
+
+.todo-btn {
+    padding: 0.5rem 1.5rem;
+    background-color: rgb(50, 50, 180);
+    border-radius: 5px;
+    border: 0;
+    color: white;
+    transition: 0.2s transform ease;
+}
+
+.todo-btn:hover {
+    cursor: pointer;
+    transform: scale(0.95);
+}
