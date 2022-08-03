@@ -28,8 +28,6 @@ export default {
         },
         async registerUser() {
             const credentials = await createUser( this.email, this.password );
-            console.log(credentials);
-            console.log(1);
         }
     }
 }
