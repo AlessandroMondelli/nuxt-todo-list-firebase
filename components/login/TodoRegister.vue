@@ -1,9 +1,9 @@
 <template>
-    <div class="todo-login-form">
-        <form @submit.prevent="loginUser">
+    <div class="todo-register-form">
+        <form @submit.prevent="registerUser">
             <CommonFormField label="Email" name="email" type="email" @return-value="getValue" />
             <CommonFormField label="Password" name="password" type="password" @return-value="getValue" />
-            <button class="todo-btn" type="submit">Login</button>
+            <button class="todo-btn" type="submit">Register</button>
         </form>
     </div>
 </template>
@@ -26,8 +26,8 @@ export default {
                 this.password = value;
             }
         },
-        async loginUser() {
-            const credentials = await signInUser( this.email, this.password );
+        async registerUser() {
+            const credentials = await createUser( this.email, this.password );
             console.log(credentials);
             console.log(1);
         }

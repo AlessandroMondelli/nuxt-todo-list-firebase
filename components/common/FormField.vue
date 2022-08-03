@@ -1,7 +1,7 @@
 <template>
     <div class="form-control">
         <label>{{ label }}</label>
-        <input :id="label" :name="name" :type="type" v-model="value" @blur="returnValue()" />  
+        <input :id="label" :name="name" :type="type" v-model="value" @blur="returnValue()" /> 
     </div>
 </template>
 
