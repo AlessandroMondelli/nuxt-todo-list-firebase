@@ -18,6 +18,7 @@ export const createUser = async( email, password ) => {
         console.log(errorMessage);
     });
 
+    navigateTo('/');
     return credentials;
 }
 
@@ -32,6 +33,7 @@ export const signInUser = async( email, password ) => {
         console.log(errorMessage);
     });
 
+    navigateTo('/');
     return credentials;
 }
 
@@ -46,10 +48,11 @@ export const initUser = async() => {
             // https://firebase.google.com/docs/reference/js/firebase.User
             const uid = user.uid;
 
-            console.log("Login: " + uid);
+            const userCookie = useCookie('userCookie');
+            userCookie.value = uid;
         } else {
-            // User is signed out
-            console.log("Logout");
+            const userCookie = useCookie('userCookie');
+            userCookie.value = false;
         }
 
         firebaseUser.value = user;

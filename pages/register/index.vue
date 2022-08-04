@@ -8,6 +8,10 @@
 </template>
 
 <script>
+definePageMeta({
+    middleware: ["auth"],
+});
+
 export default {
 
 }

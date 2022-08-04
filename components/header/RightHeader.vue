@@ -3,7 +3,7 @@
         <div class="nav-wrap">
             <nav class="todo-menu">
                 <ul>
-                    <NuxtLink to="register"><li>Register</li></NuxtLink>
+                    <NuxtLink to="register" v-if="Object.values(firebaseUser)[0].$sfirebaseUser == null"><li>Register</li></NuxtLink>
                     <NuxtLink to="login" v-if="Object.values(firebaseUser)[0].$sfirebaseUser == null"><li>Login</li></NuxtLink>
                     <li @click="logout" v-else>Logout</li>
                 </ul>
@@ -17,7 +17,6 @@ export default {
     methods: {
         async logout() {
             const result = await signOutUser();
-            console.log(result);
         }
     },
     computed: {
