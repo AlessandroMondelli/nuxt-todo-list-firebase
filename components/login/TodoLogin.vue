@@ -18,7 +18,7 @@ export default {
     },
     methods: {
         getValue( ...e ) {
-            let value = e[1];
+            const value = e[1];
 
             if( e[0] == 'email' ) {
                 this.email = value;

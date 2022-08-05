@@ -1,9 +1,8 @@
-import type { IncomingMessage, ServerResponse } from 'http';
-
-export default async ( req: IncomingMessage, res: ServerResponse ) => {
+export default defineEventHandler((event) => {
     //@ts-ignore
-    const user = req.user;
+    //Trasformo stringa in oggetto JSON
+    const user = JSON.parse( event.req.user );
 
     //Ritorno dati user 
-    return user ? user : "User non loggato";
-}
+    return user ? user : false;
+});

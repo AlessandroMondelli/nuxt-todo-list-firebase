@@ -33,7 +33,6 @@ export default {
     }
 
     input {
-        max-width: 15%;
         padding: 0.5rem;
         border-radius: 5px;
         border: 1px solid black;

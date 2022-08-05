@@ -1,11 +1,7 @@
-import type { IncomingMessage, ServerResponse } from 'http';
-import { useCookie } from 'h3';
-
-export default async( req: IncomingMessage, res: ServerResponse ) => {
-    //Passo evento e cookie da recuperare
+export default defineEventHandler((event) => {
     //@ts-ignore
-    const userCookie = useCookie( req, 'userCookie' );
+    const userCookie = useCookie( event.req, 'userCookie' );
 
     //@ts-ignore
-    req.user = userCookie;
-}
+    event.req.user = userCookie;
+});
