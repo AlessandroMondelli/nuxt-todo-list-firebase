@@ -1,5 +1,4 @@
 import { initializeApp } from "firebase/app";
-import { getDatabase } from "firebase/database";
 
 export default defineNuxtPlugin((nuxtApp) => {
     const config = useRuntimeConfig();
@@ -12,5 +11,4 @@ export default defineNuxtPlugin((nuxtApp) => {
     const app = initializeApp(firebaseConfig);
 
     initUser();
-    const database = getDatabase(app);
 });
