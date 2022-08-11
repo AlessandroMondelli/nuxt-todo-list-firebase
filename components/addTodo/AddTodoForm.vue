@@ -1,5 +1,5 @@
 <template>
-    <div class="add-todo-form-wrap">
+    <div class="add-todo-form-wrap centered-form">
         <form @submit.prevent="submitForm">
             <CommonFormField label="Cosa devi fare?" name="todo-el" type="text" @return-value="getValue" />
             <CommonFormField label="Seleziona priorità" name="priority" type="color" @return-value="getValue" />
@@ -43,6 +43,7 @@ export default {
                 if( uid && this.todoEl != '' ) { //Se l'user id è definito e il campo todo non è vuoto
                     //Carico dati nel database
                     update(ref(realtimeDatabase, 'todo/' + uid + '/' + randomId), {
+                        id: randomId,
                         userId: uid,
                         todo: this.todoEl,
                         priority : this.priority,
@@ -59,17 +60,4 @@ export default {
 </script>
 
 <style scoped>
-    .add-todo-form-wrap {
-        position: fixed;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        display: flex;
-        justify-content: center;
-        border: 1px solid rgba(0, 0, 0, 0.5);
-        background-color: #FFF;
-        padding: 2rem 4rem;
-        border-radius: 10%;
-
-    }
 </style>

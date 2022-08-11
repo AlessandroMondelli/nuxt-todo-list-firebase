@@ -1,11 +1,12 @@
 <template>    
     <div class="todo-list-wrap">
         <ul class="todo-list">
-            <li class="todo-list-el" v-for="todoEl in firebaseData" :key="todoEl">
+            <li class="todo-list-el" v-for="todoEl in firebaseData" :key="todoEl" @click="delActive = !delActive; selId = todoEl.id">
                 <span class="todo-el-content">{{ todoEl.todo }}</span>
                 <div class="todo-el-priority" :style="{ backgroundColor: todoEl.priority }"></div>
             </li>
-        </ul>    
+        </ul> 
+        <ListDelTodo :todoId="selId" v-if="delActive" @del-done="elDeleted"/>
     </div>
 </template>
 
@@ -16,6 +17,8 @@ export default {
     data() {
         return {
             firebaseData: {},
+            delActive: false,
+            selId: 0,
         }
     },
     created() { //Hook creazione
@@ -37,6 +40,13 @@ export default {
             );
         })
         .catch('Errore');
+    },
+    methods: {
+        elDeleted( e ) {
+            if( e ) {
+                this.delActive = false;
+            }
+        }
     }
 }
 </script>
@@ -49,7 +59,14 @@ export default {
 .todo-list-el {
     display: flex;
     justify-content: space-between;
+    padding: 0.5rem 0;
     margin-bottom: 1.5rem;
+    transition: all 0.2s ease;
+}
+
+.todo-list-el:hover {
+    cursor: pointer;
+    background-color: rgba(255, 0, 0, 0.2);
 }
 
 .todo-el-priority {
