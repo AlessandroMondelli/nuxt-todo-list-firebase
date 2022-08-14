@@ -1,12 +1,15 @@
 <template>    
     <div class="todo-list-wrap">
-        <ul class="todo-list">
+        <p class="add-el-warning" v-if="firebaseData === null || Object.keys(firebaseData).length === 0">Clicca il bottone in basso a destra della finestra per aggiungere degli elementi</p>
+        <ul class="todo-list" v-else>
             <li class="todo-list-el" v-for="todoEl in firebaseData" :key="todoEl" @click="delActive = !delActive; selId = todoEl.id">
                 <span class="todo-el-content">{{ todoEl.todo }}</span>
                 <div class="todo-el-priority" :style="{ backgroundColor: todoEl.priority }"></div>
             </li>
         </ul> 
-        <ListDelTodo :todoId="selId" v-if="delActive" @del-done="elDeleted"/>
+        <Transition name="fade">
+            <ListDelTodo :todoId="selId" v-if="delActive" @del-done="elDeleted"/>
+        </Transition>  
     </div>
 </template>
 
@@ -52,6 +55,10 @@ export default {
 </script>
 
 <style scoped>
+.add-el-warning {
+    font-size: 18px;
+}
+
 .todo-list {
     list-style-type: none;
 }

@@ -44,6 +44,8 @@ export default {
                         this.$emit( 'del-done', true );
                     }
                 })
+            } else {
+                this.$emit( 'del-done', true );
             }
         }
     }

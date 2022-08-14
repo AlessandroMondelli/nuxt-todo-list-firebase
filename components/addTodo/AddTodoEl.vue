@@ -1,6 +1,8 @@
 <template>
     <div class="add-todo-wrap">
-        <AddTodoForm v-if="addActive" />
+        <Transition name="fade">
+            <AddTodoForm v-if="addActive" />
+        </Transition>
         <AddTodoButton @click="openForm" :activeStatus="addActive" v-if="Object.values(firebaseUser)[0].$sfirebaseUser != null" />
     </div>
 </template>
